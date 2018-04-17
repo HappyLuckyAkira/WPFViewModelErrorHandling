@@ -6,7 +6,28 @@
         xmlns:local="clr-namespace:WpfApp1"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        
-    </Grid>
+    <Window.DataContext>
+        <local:MainWindowViewModel/>
+    </Window.DataContext>
+    <StackPanel>
+        <TextBox Margin="5" Text="{Binding Input, ValidatesOnExceptions=True, UpdateSourceTrigger=PropertyChanged}">
+            <Validation.ErrorTemplate>
+                <ControlTemplate>
+                    <Border BorderBrush="Red" BorderThickness="3">
+                        <AdornedElementPlaceholder />
+                    </Border>
+                </ControlTemplate>
+            </Validation.ErrorTemplate>
+        </TextBox>
+        <TextBox Margin="5" Text="{Binding Input2, ValidatesOnExceptions=True, UpdateSourceTrigger=PropertyChanged}">
+            <Validation.ErrorTemplate>
+                <ControlTemplate>
+                    <Border BorderBrush="Red" BorderThickness="3">
+                        <AdornedElementPlaceholder />
+                    </Border>
+                </ControlTemplate>
+            </Validation.ErrorTemplate>
+        </TextBox>
+        <Button Content="OK" Command="{Binding Path=SampleCommand}" />
+    </StackPanel>
 </Window>
