@@ -15,7 +15,16 @@ namespace WpfApp1
     {
         private int input;
         private int input2;
-
+        bool hasViewError;
+        public bool HasViewError
+        {
+            get { return hasViewError; }
+            set
+            {
+                SetProperty(ref hasViewError, value);
+                SampleCommand.RaiseCanExecuteChanged();
+            }
+        }
 
         public MainWindowViewModel()
         {
@@ -27,8 +36,7 @@ namespace WpfApp1
                 // CanExecute
                 () =>
                 {
-                    // 入力エラーがあったらfalseを返したいよね
-                    return true;
+                    return !HasViewError;
                 });
         }
 
